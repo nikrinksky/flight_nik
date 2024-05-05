@@ -5,7 +5,16 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Класс фильтра, исключающий рейсы, вылет которых, происходит до текущего момента времени
+ */
 public class DepartureFilterUpToCurrentTime implements FlightFilter {
+    /**
+     * Фильтрует список рейсов, оставляя только те, вылет которых,
+     * происходит после текущего времени.
+     * @param flights Список рейсов, который нужно отфильтровать.
+     * @return Список рейсов, у которых время вылета происходит после текущего времени.
+     */
     @Override
     public List<Flight> filterFlights(List<Flight> flights) {
         LocalDateTime currentTime = LocalDateTime.now();

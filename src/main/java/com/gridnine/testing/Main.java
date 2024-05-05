@@ -17,7 +17,7 @@ public class Main {
         System.out.println(flightFiltersDeparture.filterFlights(flightList));
 
         FlightFilter flightFiltersArrival = new ArrivalFilterBeforeDepartureDate();
-        System.out.println("Отфильтрованные рейсы, прибытие которых, перед датой вылета");
+        System.out.println("Отфильтрованные рейсы, прибытие которых, перед датой вылета следующего рейса");
         System.out.println(flightFiltersArrival.filterFlights(flightList));
 
         FlightFilter flightFiltersInterval = new FilterIntervalBetweenArrivalAndDeparture();
