@@ -20,22 +20,22 @@ public class FilterIntervalBetweenArrivalAndDeparture implements FlightFilter {
      */
     @Override
     public List<Flight> filterFlights(List<Flight> flights) {
-        List<Flight> filteredSegments = new ArrayList<>();
+        List<Flight> filteredFlight = new ArrayList<>();
 
         for (Flight flight : flights) {
             List<Segment> segments = flight.getSegments();
-            long overallTime = 0;
+            long overallInterval = 0;
             for (int i = 0; i < segments.size() - 1; i++) {
                 LocalDateTime arrivalDateTime = segments.get(i).getArrivalDate();
                 LocalDateTime departureDateTime = segments.get(i + 1).getDepartureDate();
 
-                overallTime += arrivalDateTime.until(departureDateTime, ChronoUnit.HOURS);
+                overallInterval += arrivalDateTime.until(departureDateTime, ChronoUnit.HOURS);
             }
 
-            if (overallTime <= 2) {
-                filteredSegments.add(flight);
+            if (overallInterval <= 2) {
+                filteredFlight.add(flight);
             }
         }
-        return filteredSegments;
+        return filteredFlight;
     }
 }
